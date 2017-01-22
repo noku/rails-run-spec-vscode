@@ -1,0 +1,52 @@
+{
+    "name": "rails-run-spec-vscode",
+    "displayName": "Rails Run Specs",
+    "description": "Rails Run Spec Files",
+    "version": "0.0.1",
+    "publisher": "noku",
+    "engines": {
+        "vscode": "^1.5.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/noku/rails-run-spec-vscode.git"
+    },
+    "homepage": "https://github.com/noku/rails-run-spec-vscode",
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onCommand:extension.sayHello"
+    ],
+    "main": "./out/src/extension",
+    "contributes": {
+        "commands": [{
+            "command": "extension.sayHello",
+            "title": "Hello World"
+        }],
+        "keybindings":[
+            {
+                "command": "extension.sayHello",
+                "key": "cmd+k cmd+y"
+            }
+        ]
+    },
+
+    "keywords": [
+        "Ruby on Rails",
+        "Rspec"
+    ],
+    "scripts": {
+        "vscode:prepublish": "tsc -p ./",
+        "compile": "tsc -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "typescript": "^2.0.3",
+        "vscode": "^1.0.0",
+        "mocha": "^2.3.3",
+        "@types/node": "^6.0.40",
+        "@types/mocha": "^2.2.32"
+    }
+}
