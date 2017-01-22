@@ -16,6 +16,13 @@ export function activate(context: vscode.ExtensionContext) {
     // Now provide the implementation of the command with  registerCommand
     // The commandId parameter must match the command field in package.json
     context.subscriptions.push(vscode.commands.registerCommand('extension.runSpecFile', terminal.runSpecFile));
+
+    context.subscriptions.push(vscode.commands.registerCommand('extension.runSpecLine', () => {
+        let currentPosition:vscode.Position = vscode.window.activeTextEditor.selection.active;
+        terminal.runSpecFile({lineNumber: currentPosition.line + 1});
+    }));
+
+    context.subscriptions.push(vscode.commands.registerCommand('extension.runLastSpec', terminal.runLastSpec));
 }
 
 // this method is called when your extension is deactivated

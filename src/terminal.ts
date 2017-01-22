@@ -1,10 +1,11 @@
 'use strict';
 import * as vscode from 'vscode';
 
+let lastCommandText;
 let activeTerminals = {};
 const SPEC_TERMINAL_NAME = 'Running Specs';
 
-export function runSpecFile(){
+export function runSpecFile(options: {lineNumber?: number; commandText?: string}){
     let editor: vscode.TextEditor = vscode.window.activeTextEditor,
         fileName: string = vscode.workspace.asRelativePath(editor.document.fileName);
 
@@ -21,12 +22,21 @@ export function runSpecFile(){
 
     vscode.commands.executeCommand('workbench.action.terminal.focus');
     vscode.commands.executeCommand('workbench.action.terminal.clear');
-
     specTerminal.show();
-    specTerminal.sendText(`bundle exec rspec ${fileName}`);
+
+    let lineNumberText = options.lineNumber ? `:${options.lineNumber}` : '',
+        commandText = options.commandText || `bundle exec rspec ${fileName}${lineNumberText}`;
+
+    specTerminal.sendText(commandText);
+    lastCommandText = commandText;
+}
+
+export function runLastSpec() {
+    if (lastCommandText) {
+        runSpecFile({commandText: lastCommandText});
+    }
 }
 
 function isSpec(fileName: string) {
     return fileName.indexOf('_spec.rb') > -1;
 }
-

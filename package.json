@@ -16,22 +16,41 @@
         "Other"
     ],
     "activationEvents": [
-        "onCommand:extension.runSpecFile"
+        "onCommand:extension.runSpecFile",
+        "onCommand:extension.runSpecLine",
+        "onCommand:extension.runLastSpec"
     ],
     "main": "./out/src/extension",
     "contributes": {
-        "commands": [{
-            "command": "extension.runSpecFile",
-            "title": "Run File Spec"
-        }],
+        "commands": [
+            {
+                "command": "extension.runSpecFile",
+                "title": "Run File Spec"
+            },
+            {
+                "command": "extension.runSpecLine",
+                "title": "Run Spec Line"
+            },
+            {
+                "command": "extension.runLastSpec",
+                "title": "Run Last Spec"
+            }
+        ],
         "keybindings":[
             {
                 "command": "extension.runSpecFile",
                 "key": "cmd+shift+t"
+            },
+            {
+                "command": "extension.runSpecLine",
+                "key": "cmd+l"
+            },
+            {
+                "command": "extension.runLastSpec",
+                "key": "cmd+y"
             }
         ]
     },
-
     "keywords": [
         "Ruby on Rails",
         "Rspec"
