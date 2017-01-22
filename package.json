@@ -49,7 +49,22 @@
                 "command": "extension.runLastSpec",
                 "key": "cmd+y"
             }
-        ]
+        ],
+        "configuration": {
+            "title": "Ruby Spec Test Configurations",
+            "properties": {
+                "ruby.specGem": {
+                    "type": "string",
+                    "default": "rspec",
+                    "description": "Defines the type of tool used for testing",
+                    "enum": [
+                        "rspec",
+                        "zeus"
+                    ]
+
+                }
+            }
+        }
     },
     "keywords": [
         "Ruby on Rails",
