@@ -16,18 +16,18 @@
         "Other"
     ],
     "activationEvents": [
-        "onCommand:extension.sayHello"
+        "onCommand:extension.runSpecFile"
     ],
     "main": "./out/src/extension",
     "contributes": {
         "commands": [{
-            "command": "extension.sayHello",
-            "title": "Hello World"
+            "command": "extension.runSpecFile",
+            "title": "Run File Spec"
         }],
         "keybindings":[
             {
-                "command": "extension.sayHello",
-                "key": "cmd+k cmd+y"
+                "command": "extension.runSpecFile",
+                "key": "cmd+shift+t"
             }
         ]
     },
