@@ -1,2 +1,7 @@
+#OSX
+.DS_Store
+
 out
 node_modules
+typings
+npm-debug.log*
