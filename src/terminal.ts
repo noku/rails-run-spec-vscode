@@ -5,6 +5,12 @@ let lastCommandText;
 let activeTerminals = {};
 const SPEC_TERMINAL_NAME = 'Running Specs';
 
+vscode.window.onDidCloseTerminal((terminal: vscode.Terminal) => {
+    if (activeTerminals[terminal.name]) {
+        delete activeTerminals[terminal.name];
+    }
+});
+
 export function runSpecFile(options: {lineNumber?: number; commandText?: string}){
     let editor: vscode.TextEditor = vscode.window.activeTextEditor,
         fileName: string = vscode.workspace.asRelativePath(editor.document.fileName);
