@@ -2,8 +2,13 @@
     "name": "rails-run-spec-vscode",
     "displayName": "Rails Run Specs",
     "description": "Rails Run Spec Files",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "publisher": "noku",
+    "icon": "rspec.png",
+    "galleryBanner": {
+        "color": "#232323",
+        "theme": "dark"
+    },
     "engines": {
         "vscode": "^1.5.0"
     },
