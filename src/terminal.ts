@@ -20,10 +20,34 @@ export function runSpecFile(options: {lineNumber?: number; commandText?: string}
         return;
     }
 
-    if (isZeusActive() && !activeTerminals[ZEUS_TERMINAL_NAME]) {
+    let isZeusInit = isZeusActive() && !activeTerminals[ZEUS_TERMINAL_NAME];
+
+    if (isZeusInit) {
         zeusTerminalInit();
     }
 
+    if (isZeusInit) {
+        let interval = getZeusStartTimeout();
+
+        if (interval > 0) {
+            vscode.window.showInformationMessage('Starting Zeus ...');
+        }
+
+        setTimeout(() => {
+            executeInTerminal(fileName, options);
+        }, interval);
+    } else {
+        executeInTerminal(fileName, options);
+    }
+}
+
+export function runLastSpec() {
+    if (lastCommandText) {
+        runSpecFile({commandText: lastCommandText});
+    }
+}
+
+function executeInTerminal(fileName, options) {
     let specTerminal: vscode.Terminal = activeTerminals[SPEC_TERMINAL_NAME];
 
     if (!specTerminal) {
@@ -42,12 +66,6 @@ export function runSpecFile(options: {lineNumber?: number; commandText?: string}
     lastCommandText = commandText;
 }
 
-export function runLastSpec() {
-    if (lastCommandText) {
-        runSpecFile({commandText: lastCommandText});
-    }
-}
-
 function getSpecCommand() {
     if (isZeusActive()) {
         return 'zeus test';
@@ -60,10 +78,14 @@ function isZeusActive() {
     return vscode.workspace.getConfiguration("ruby").get('specGem') == "zeus";
 }
 
+function getZeusStartTimeout() {
+    return <number> vscode.workspace.getConfiguration("ruby").get('zeusStartTimeout');
+}
+
 function zeusTerminalInit() {
     let zeusTerminal = vscode.window.createTerminal(ZEUS_TERMINAL_NAME)
     activeTerminals[ZEUS_TERMINAL_NAME] = zeusTerminal;
-    zeusTerminal.sendText("zeus start")
+    zeusTerminal.sendText("zeus start");
 }
 
 function isSpec(fileName: string) {

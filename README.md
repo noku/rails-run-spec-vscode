@@ -30,7 +30,23 @@ Available commands:
 
 This extension contributes the following settings:
 
-* `ruby.specGem`: set to `rspec`. Other possible value: `zeus`.
+```json
+"ruby.specGem": {
+    "type": "string",
+    "default": "rspec",
+    "description": "Defines the type of tool used for testing",
+    "enum": [
+        "rspec",
+        "zeus"
+    ]
+},
+"ruby.zeusStartTimeout": {
+    "type": "number",
+    "description": "Wait time neccessary on spec first run.
+        Zeus gem requries a certain period to start",
+    "default": 2000
+}
+```
 
 ### 0.0.1
 

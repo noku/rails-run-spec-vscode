@@ -2,7 +2,7 @@
     "name": "rails-run-spec-vscode",
     "displayName": "Rails Run Specs",
     "description": "Rails Run Spec Files",
-    "version": "0.0.2",
+    "version": "0.0.3",
     "publisher": "noku",
     "icon": "rspec.png",
     "galleryBanner": {
@@ -66,7 +66,11 @@
                         "rspec",
                         "zeus"
                     ]
-
+                },
+                "ruby.zeusStartTimeout": {
+                    "type": "number",
+                    "description": "Zeus gem needs a certain time to start. Defined in ms",
+                    "default": 2000
                 }
             }
         }
