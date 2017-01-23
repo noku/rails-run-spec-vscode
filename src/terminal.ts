@@ -12,7 +12,7 @@ vscode.window.onDidCloseTerminal((terminal: vscode.Terminal) => {
     }
 });
 
-export function runSpecFile(options: {lineNumber?: number; commandText?: string}){
+export function runSpecFile(options: {lineNumber?: number; commandText?: string} = {}){
     let editor: vscode.TextEditor = vscode.window.activeTextEditor,
         fileName: string = vscode.workspace.asRelativePath(editor.document.fileName);
 
