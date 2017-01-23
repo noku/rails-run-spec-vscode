@@ -16,7 +16,7 @@ export function runSpecFile(options: {lineNumber?: number; commandText?: string}
     let editor: vscode.TextEditor = vscode.window.activeTextEditor,
         fileName: string = vscode.workspace.asRelativePath(editor.document.fileName);
 
-    if (!editor || !isSpec(fileName) && !lastCommandText) {
+    if (!editor || !isSpec(fileName) && !options.commandText) {
         return;
     }
 
