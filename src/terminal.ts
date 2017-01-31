@@ -69,7 +69,7 @@ function executeInTerminal(fileName, options) {
 function getSpecCommand() {
     if (customSpecCommand()) {
         return customSpecCommand();
-    } elseif (isZeusActive()) {
+    } else if (isZeusActive()) {
         return 'zeus test';
     } else {
         return 'bundle exec rspec';
