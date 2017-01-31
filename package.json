@@ -58,6 +58,11 @@
         "configuration": {
             "title": "Ruby Spec Test Configurations",
             "properties": {
+                "ruby.specCommand": {
+                    "type": "string",
+                    "default": "",
+                    "description": "Defines a custom command to run for specs (i.e. 'spring rspec')"
+                },
                 "ruby.specGem": {
                     "type": "string",
                     "default": "rspec",

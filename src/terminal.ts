@@ -67,11 +67,17 @@ function executeInTerminal(fileName, options) {
 }
 
 function getSpecCommand() {
-    if (isZeusActive()) {
+    if (customSpecCommand()) {
+        return customSpecCommand();
+    } else if (isZeusActive()) {
         return 'zeus test';
     } else {
         return 'bundle exec rspec';
     }
+}
+
+function customSpecCommand() {
+    return vscode.workspace.getConfiguration("ruby").get('specCommand');
 }
 
 function isZeusActive() {

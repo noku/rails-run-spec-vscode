@@ -31,6 +31,11 @@ Available commands:
 This extension contributes the following settings:
 
 ```json
+"ruby.specCommand": {
+    "type": "string",
+    "default": "",
+    "description": "Defines a custom command to run for specs (i.e. 'spring rspec')"
+},
 "ruby.specGem": {
     "type": "string",
     "default": "rspec",
