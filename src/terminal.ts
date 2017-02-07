@@ -12,11 +12,11 @@ vscode.window.onDidCloseTerminal((terminal: vscode.Terminal) => {
     }
 });
 
-export function runSpecFile(options: {lineNumber?: number; commandText?: string} = {}){
+export function runSpecFile(options: {path?: string; lineNumber?: number; commandText?: string} = {}){
     let editor: vscode.TextEditor = vscode.window.activeTextEditor,
-        fileName: string = vscode.workspace.asRelativePath(editor.document.fileName);
+        fileName: string = vscode.workspace.asRelativePath(options.path || editor.document.fileName);
 
-    if (!editor || !isSpec(fileName) && !options.commandText) {
+    if (!editor || !isSpecDirectory(fileName) && !isSpec(fileName) && !options.commandText) {
         return;
     }
 
@@ -107,4 +107,8 @@ function zeusTerminalInit() {
 
 function isSpec(fileName: string) {
     return fileName.indexOf('_spec.rb') > -1;
+}
+
+function isSpecDirectory(fileName: string) {
+    return fileName.indexOf('spec') > -1 && fileName.indexOf('.rb') == -1
 }

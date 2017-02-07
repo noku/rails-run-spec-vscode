@@ -26,6 +26,9 @@ Available commands:
 ]
 ```
 
+Also there is an option to run any `file` or `folder` specs from sidebar.
+**Right click** an folder or spec file and choose `Run Specs` option.
+
 ## Extension Settings
 
 This extension contributes the following settings:

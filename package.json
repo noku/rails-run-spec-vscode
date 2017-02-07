@@ -22,6 +22,7 @@
     ],
     "activationEvents": [
         "onCommand:extension.runFileSpecs",
+        "onCommand:extension.runSpecsFromMenu",
         "onCommand:extension.runSpecLine",
         "onCommand:extension.runLastSpec"
     ],
@@ -31,6 +32,10 @@
             {
                 "command": "extension.runFileSpecs",
                 "title": "Run File Specs"
+            },
+            {
+                "command": "extension.runSpecsFromMenu",
+                "title": "Run Specs"
             },
             {
                 "command": "extension.runSpecLine",
@@ -55,6 +60,14 @@
                 "key": "cmd+y"
             }
         ],
+        "menus": {
+            "explorer/context": [
+                {
+                    "command": "extension.runSpecsFromMenu",
+                    "group": "spec"
+                }
+            ]
+        },
         "configuration": {
             "title": "Ruby Spec Test Configurations",
             "properties": {
