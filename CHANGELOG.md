@@ -1,7 +1,6 @@
 # Change Log
-All notable changes to the "rails-run-spec-vscode" extension will be documented in this file.
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+## [0.0.8]
 
-## [Unreleased]
-- Initial release
+- Added two new configurations `specFocusTerminal` and `specClearTerminal`
+- Added possibility to run specs from side bar.
