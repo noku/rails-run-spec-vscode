@@ -51,6 +51,16 @@ This extension contributes the following settings:
         Zeus gem requries a certain period to start",
     "default": 2000
 }
+"ruby.specFocusTerminal": {
+    "type": "boolean",
+    "default": "true",
+    "description": "Defines if it should focus on terminal on each spec run"
+}
+"ruby.specClearTerminal": {
+    "type": "boolean",
+    "default": "true",
+    "description": "Defines if it should clear the terminal on each spec run"
+}
 ```
 
 ### 0.0.1

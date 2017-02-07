@@ -55,14 +55,17 @@ function executeInTerminal(fileName, options) {
         activeTerminals[SPEC_TERMINAL_NAME] = specTerminal;
     }
 
-    vscode.commands.executeCommand('workbench.action.terminal.focus');
-    vscode.commands.executeCommand('workbench.action.terminal.clear');
-    specTerminal.show();
+    if (shouldClearTerminal()) {
+        vscode.commands.executeCommand('workbench.action.terminal.clear');
+    }
+
+    specTerminal.show(shouldFreserveFocus());
 
     let lineNumberText = options.lineNumber ? `:${options.lineNumber}` : '',
         commandText = options.commandText || `${getSpecCommand()} ${fileName}${lineNumberText}`;
 
     specTerminal.sendText(commandText);
+
     lastCommandText = commandText;
 }
 
@@ -74,6 +77,14 @@ function getSpecCommand() {
     } else {
         return 'bundle exec rspec';
     }
+}
+
+function shouldFreserveFocus() {
+    return !vscode.workspace.getConfiguration("ruby").get('specFocusTerminal');
+}
+
+function shouldClearTerminal() {
+    return vscode.workspace.getConfiguration("ruby").get('specClearTerminal');
 }
 
 function customSpecCommand() {

@@ -63,6 +63,16 @@
                     "default": "",
                     "description": "Defines a custom command to run for specs (i.e. 'spring rspec')"
                 },
+                "ruby.specFocusTerminal": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Defines if it should focus on terminal on each spec run"
+                },
+                "ruby.specClearTerminal": {
+                    "type": "boolean",
+                    "default": true,
+                    "description": "Defines if it should clear the terminal on each spec run"
+                },
                 "ruby.specGem": {
                     "type": "string",
                     "default": "rspec",
