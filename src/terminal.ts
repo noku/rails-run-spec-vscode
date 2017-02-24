@@ -1,5 +1,6 @@
 'use strict';
 import * as vscode from 'vscode';
+import toSpecPath from './utils/toSpecPath';
 
 let lastCommandText;
 let activeTerminals = {};
@@ -111,11 +112,4 @@ function isSpec(fileName: string) {
 
 function isSpecDirectory(fileName: string) {
     return fileName.indexOf('spec') > -1 && fileName.indexOf('.rb') == -1
-}
-
-function toSpecPath(filePath: string) {
-    let [first, ...rest] = filePath.split('/');
-    let middle = rest.slice(0, rest.length - 1);
-    let last = rest[rest.length - 1];
-    return ['spec', ...middle , last.replace('.rb', '_spec.rb')].join('/');
 }
