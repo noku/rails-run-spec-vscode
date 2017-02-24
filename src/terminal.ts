@@ -14,7 +14,7 @@ vscode.window.onDidCloseTerminal((terminal: vscode.Terminal) => {
 
 export function runSpecFile(options: {path?: string; lineNumber?: number; commandText?: string} = {}){
     let editor: vscode.TextEditor = vscode.window.activeTextEditor,
-        fileName: string = vscode.workspace.asRelativePath(options.path || editor.document.fileName);
+        fileName: string = toSpecPath(vscode.workspace.asRelativePath(options.path || editor.document.fileName))
 
     if (!editor || !isSpecDirectory(fileName) && !isSpec(fileName) && !options.commandText) {
         return;
@@ -111,4 +111,11 @@ function isSpec(fileName: string) {
 
 function isSpecDirectory(fileName: string) {
     return fileName.indexOf('spec') > -1 && fileName.indexOf('.rb') == -1
+}
+
+function toSpecPath(filePath: string) {
+    let [first, ...rest] = filePath.split('/');
+    let middle = rest.slice(0, rest.length - 1);
+    let last = rest[rest.length - 1];
+    return ['spec', ...middle , last.replace('.rb', '_spec.rb')].join('/');
 }
