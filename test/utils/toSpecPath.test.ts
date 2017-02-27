@@ -16,4 +16,11 @@ suite("toSpecPath", () => {
             toSpecPath('app/controllers/namespaces/admin/test_controller.rb')
         );
     });
+
+    test("Converting spec path should be no-op", () => {
+        assert.equal(
+            'spec/controllers/namespaces/admin/test_controller_spec.rb',
+            toSpecPath('spec/controllers/namespaces/admin/test_controller_spec.rb')
+        );
+    })
 });
