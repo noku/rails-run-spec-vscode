@@ -2,7 +2,7 @@
     "name": "rails-run-spec-vscode",
     "displayName": "Rails Run Specs",
     "description": "Rails Run Spec Files",
-    "version": "0.0.8",
+    "version": "0.0.9",
     "publisher": "noku",
     "icon": "rspec.png",
     "galleryBanner": {
@@ -10,7 +10,7 @@
         "theme": "dark"
     },
     "engines": {
-        "vscode": "^1.5.0"
+        "vscode": "^1.6.0"
     },
     "repository": {
         "type": "git",
@@ -117,6 +117,7 @@
         "typescript": "^2.0.3",
         "typings": "^2.1.0",
         "mocha": "^2.3.3",
+        "vscode": "^1.0.0",
         "@types/node": "^6.0.40",
         "@types/mocha": "^2.2.32"
     }

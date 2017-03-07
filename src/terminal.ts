@@ -1,5 +1,6 @@
 'use strict';
 import * as vscode from 'vscode';
+import toSpecPath from './utils/toSpecPath';
 
 let lastCommandText;
 let activeTerminals = {};
@@ -14,7 +15,7 @@ vscode.window.onDidCloseTerminal((terminal: vscode.Terminal) => {
 
 export function runSpecFile(options: {path?: string; lineNumber?: number; commandText?: string} = {}){
     let editor: vscode.TextEditor = vscode.window.activeTextEditor,
-        fileName: string = vscode.workspace.asRelativePath(options.path || editor.document.fileName);
+        fileName: string = toSpecPath(vscode.workspace.asRelativePath(options.path || editor.document.fileName))
 
     if (!editor || !isSpecDirectory(fileName) && !isSpec(fileName) && !options.commandText) {
         return;
