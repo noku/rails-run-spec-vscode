@@ -9,8 +9,8 @@ Available commands:
 ```json
 [
     {
-        "command": "extension.runSpecFile",
-        "title": "Run File Spec",
+        "command": "extension.runFileSpecs",
+        "title": "Run File Specs",
         "key": "cmd+shift+t"
     },
     {
