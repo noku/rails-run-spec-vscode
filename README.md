@@ -60,13 +60,18 @@ This extension contributes the following settings:
 }
 "ruby.specFocusTerminal": {
     "type": "boolean",
-    "default": "true",
+    "default": true,
     "description": "Defines if it should focus on terminal on each spec run"
 }
 "ruby.specClearTerminal": {
     "type": "boolean",
-    "default": "true",
+    "default": true,
     "description": "Defines if it should clear the terminal on each spec run"
+}
+"ruby.specSaveFile": {
+    "type":"boolean",
+    "default": false,
+    "description": "Auto Save file before running spec test"
 }
 ```
 

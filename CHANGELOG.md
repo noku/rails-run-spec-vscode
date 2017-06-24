@@ -1,5 +1,10 @@
 # Change Log
 
+
+## [0.1.0]
+
+- Add new option for auto saving file before the spec is started.
+
 ## [0.0.9]
 
 - Added the ability to run specs from other files. `app/controllers/comments_controller.rb => spec/controllers/comments_controller_spec.rb`

@@ -21,6 +21,10 @@ export function runSpecFile(options: {path?: string; lineNumber?: number; comman
         return;
     }
 
+    if (vscode.workspace.getConfiguration("ruby").get("specSaveFile")) {
+        vscode.window.activeTextEditor.document.save();
+    }
+
     let isZeusInit = isZeusActive() && !activeTerminals[ZEUS_TERMINAL_NAME];
 
     if (isZeusInit) {
