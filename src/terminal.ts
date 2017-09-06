@@ -111,9 +111,9 @@ function zeusTerminalInit() {
 }
 
 function isSpec(fileName: string) {
-    return fileName.indexOf('_spec.rb') > -1;
+    return fileName.indexOf('_spec.rb') > -1 || fileName.indexOf('_test.rb') > -1;
 }
 
 function isSpecDirectory(fileName: string) {
-    return fileName.indexOf('spec') > -1 && fileName.indexOf('.rb') == -1
+    return (fileName.indexOf('spec') > -1 || fileName.indexOf('test') > -1) && fileName.indexOf('.rb') == -1
 }
