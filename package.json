@@ -10,7 +10,7 @@
         "theme": "dark"
     },
     "engines": {
-        "vscode": "^1.6.0"
+        "vscode": "^1.19.0"
     },
     "repository": {
         "type": "git",
@@ -46,7 +46,7 @@
                 "title": "Run Last Spec"
             }
         ],
-        "keybindings":[
+        "keybindings": [
             {
                 "command": "extension.runFileSpecs",
                 "key": "cmd+shift+t"
@@ -101,7 +101,7 @@
                     "default": 2000
                 },
                 "ruby.specSaveFile": {
-                    "type":"boolean",
+                    "type": "boolean",
                     "description": "Auto Save file before running spec test",
                     "default": false
                 }
