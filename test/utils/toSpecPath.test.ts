@@ -23,4 +23,12 @@ suite("toSpecPath", () => {
             toSpecPath('spec/controllers/namespaces/admin/test_controller_spec.rb')
         );
     })
+    suite("when current file is not inside 'app' folder", () => {
+        test("it should preserve the whole path", () => {
+            assert.equal(
+                'spec/lib/utils/custom_calculator_spec.rb',
+                toSpecPath('lib/utils/custom_calculator.rb')
+            );
+        })
+    });
 });
