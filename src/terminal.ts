@@ -15,7 +15,7 @@ vscode.window.onDidCloseTerminal((terminal: vscode.Terminal) => {
 
 export function runSpecFile(options: {path?: string; lineNumber?: number; commandText?: string}){
     let editor: vscode.TextEditor = vscode.window.activeTextEditor,
-        path = vscode.workspace.asRelativePath(options.path || editor.document.fileName),
+        path = vscode.workspace.asRelativePath(options.path || editor.document.fileName, false),
         pattern = getTestFilePattern(),
         fileName = toSpecPath(path, pattern);
 
