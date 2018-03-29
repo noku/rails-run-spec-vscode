@@ -52,6 +52,15 @@ This extension contributes the following settings:
         "zeus"
     ]
 },
+"ruby.specPattern": {
+    "type": "string",
+    "default": "spec",
+    "description": "Defines the pattern for seaching test files",
+    "enum": [
+        "spec",
+        "test"
+    ]
+},
 "ruby.zeusStartTimeout": {
     "type": "number",
     "description": "Wait time neccessary on spec first run.

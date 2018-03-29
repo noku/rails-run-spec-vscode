@@ -95,6 +95,15 @@
                         "zeus"
                     ]
                 },
+                "ruby.specPattern": {
+                    "type": "string",
+                    "default": "spec",
+                    "description": "Defines the pattern for seaching test files",
+                    "enum": [
+                        "spec",
+                        "test"
+                    ]
+                },
                 "ruby.zeusStartTimeout": {
                     "type": "number",
                     "description": "Zeus gem needs a certain time to start. Defined in ms",
