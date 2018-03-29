@@ -1,5 +1,8 @@
 # Change Log
 
+## [0.1.1]
+
+- Add new option for spec pattern to support minitest.
 
 ## [0.1.0]
 

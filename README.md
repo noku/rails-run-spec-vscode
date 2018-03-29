@@ -26,12 +26,21 @@ Available commands:
 ]
 ```
 
-Also there is an option to run any `file` or `folder` specs from sidebar.
+**Sidebar Option**
+
+There is an option to run any `file` or `folder` specs from sidebar.
 **Right click** an folder or spec file and choose `Run Specs` option.
 
-You can also run spec for currently open file, the extension will try to guess the path using Rails convention:
+**Infer Spec Files**
 
-`app/controllers/test_controller.rb => spec/controllers/test_controller_spec.rb`
+There is posibility to run specs for currently open file,
+the extension will try to guess the path using Rails convention:
+
+`app/controllers/test_controller.rb => spec/controllers/test_controller_spec.rb`.
+
+**Minitest support**
+
+In order to run `*_test` files the `ruby.specPattern` needs to be set to `test` in the Vscode settings.
 
 ## Extension Settings
 
@@ -83,7 +92,3 @@ This extension contributes the following settings:
     "description": "Auto Save file before running spec test"
 }
 ```
-
-### 0.0.1
-
-Initial release of `rails-run-spec-vscode`.
