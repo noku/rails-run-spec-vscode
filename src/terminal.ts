@@ -15,9 +15,11 @@ vscode.window.onDidCloseTerminal((terminal: vscode.Terminal) => {
 
 export function runSpecFile(options: {path?: string; lineNumber?: number; commandText?: string}){
     let editor: vscode.TextEditor = vscode.window.activeTextEditor,
-        fileName: string = toSpecPath(vscode.workspace.asRelativePath(options.path || editor.document.fileName, false))
+        path = vscode.workspace.asRelativePath(options.path || editor.document.fileName, false),
+        pattern = getTestFilePattern(),
+        fileName = toSpecPath(path, pattern);
 
-    if (!editor || !isSpecDirectory(fileName) && !isSpec(fileName) && !options.commandText) {
+    if (!editor || !isSpecDirectory(fileName, pattern) && !isSpec(fileName, pattern) && !options.commandText) {
         return;
     }
 
@@ -100,8 +102,12 @@ function isZeusActive() {
     return vscode.workspace.getConfiguration("ruby").get('specGem') == "zeus";
 }
 
-function getZeusStartTimeout() {
-    return <number> vscode.workspace.getConfiguration("ruby").get('zeusStartTimeout');
+function getTestFilePattern(): string {
+    return vscode.workspace.getConfiguration("ruby").get('specPattern');
+}
+
+function getZeusStartTimeout(): number {
+    return vscode.workspace.getConfiguration("ruby").get('zeusStartTimeout');
 }
 
 function zeusTerminalInit() {
@@ -110,10 +116,10 @@ function zeusTerminalInit() {
     zeusTerminal.sendText("zeus start");
 }
 
-function isSpec(fileName: string) {
-    return fileName.indexOf('_spec.rb') > -1;
+function isSpec(fileName: string, pattern: string): boolean {
+    return fileName.indexOf(`_${pattern}.rb`) > -1;
 }
 
-function isSpecDirectory(fileName: string) {
-    return fileName.indexOf('spec') > -1 && fileName.indexOf('.rb') == -1
+function isSpecDirectory(fileName: string, pattern: string): boolean {
+    return (fileName.indexOf(pattern) > -1) && fileName.indexOf('.rb') == -1
 }
