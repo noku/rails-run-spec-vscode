@@ -63,9 +63,15 @@ function executeInTerminal(fileName, options) {
     }
 
     if (shouldClearTerminal()) {
-        vscode.commands.executeCommand('workbench.action.terminal.clear');
+        vscode.commands.executeCommand('workbench.action.terminal.clear').then(() => {
+            executeCommand(specTerminal, fileName, options)
+        });
+    } else {
+        executeCommand(specTerminal, fileName, options);
     }
+}
 
+function executeCommand(specTerminal, fileName, options) {
     specTerminal.show(shouldFreserveFocus());
 
     let lineNumberText = options.lineNumber ? `:${options.lineNumber}` : '',
