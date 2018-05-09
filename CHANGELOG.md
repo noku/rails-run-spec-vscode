@@ -1,5 +1,10 @@
 # Change Log
 
+## [0.1.2]
+
+- Fixes issue with clearing terminal after the command is executed, introduced in VSCODE version `1.23.0`.
+- Make extension work with workspaces
+
 ## [0.1.1]
 
 - Add new option for spec pattern to support minitest.
