@@ -71,6 +71,11 @@
         "configuration": {
             "title": "Ruby Spec Test Configurations",
             "properties": {
+                "ruby.specUseForwardSlashesInPaths": {
+                    "type": "boolean",
+                    "default": false,
+                    "description": "Defines if spec paths should always use forward slashes regardless of OS"
+                },
                 "ruby.specCommand": {
                     "type": "string",
                     "default": "",
