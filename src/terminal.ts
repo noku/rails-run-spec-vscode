@@ -27,7 +27,7 @@ export function runSpecFile(options: {path?: string; lineNumber?: number; comman
         vscode.window.activeTextEditor.document.save();
     }
 
-    let isZeusInit = isZeusActive() && !activeTerminals[ZEUS_TERMINAL_NAME];
+    let isZeusInit = isZeusActive() && !activeTerminals[getTerminalName(ZEUS_TERMINAL_NAME)];
 
     if (isZeusInit) {
         zeusTerminalInit();
@@ -55,10 +55,10 @@ export function runLastSpec() {
 }
 
 function executeInTerminal(fileName, options) {
-    let specTerminal: vscode.Terminal = activeTerminals[SPEC_TERMINAL_NAME];
+    let specTerminal: vscode.Terminal = activeTerminals[getTerminalName(SPEC_TERMINAL_NAME)];
 
     if (!specTerminal) {
-        specTerminal = vscode.window.createTerminal(SPEC_TERMINAL_NAME);
+        specTerminal = vscode.window.createTerminal(getTerminalName(SPEC_TERMINAL_NAME));
         activeTerminals[SPEC_TERMINAL_NAME] = specTerminal;
     }
 
@@ -80,6 +80,13 @@ function executeCommand(specTerminal, fileName, options) {
     specTerminal.sendText(commandText);
 
     lastCommandText = commandText;
+}
+
+function getTerminalName(prefix) {
+    return [
+        prefix,
+        vscode.workspace.getWorkspaceFolder(vscode.window.activeTextEditor.document.uri).name
+    ].join(' ');
 }
 
 function getSpecCommand() {
@@ -117,8 +124,9 @@ function getZeusStartTimeout(): number {
 }
 
 function zeusTerminalInit() {
-    let zeusTerminal = vscode.window.createTerminal(ZEUS_TERMINAL_NAME)
-    activeTerminals[ZEUS_TERMINAL_NAME] = zeusTerminal;
+    const terminalName = getTerminalName(ZEUS_TERMINAL_NAME);
+    let zeusTerminal = vscode.window.createTerminal(terminalName)
+    activeTerminals[terminalName] = zeusTerminal;
     zeusTerminal.sendText("zeus start");
 }
 
