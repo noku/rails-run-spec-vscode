@@ -3,7 +3,7 @@ import * as vscode from 'vscode';
 import toSpecPath from './utils/toSpecPath';
 
 let lastCommandText;
-let activeTerminals = {};
+let activeTerminals: { [index:string]: vscode.Terminal } = {};
 const SPEC_TERMINAL_NAME = 'Running Specs';
 const ZEUS_TERMINAL_NAME = 'Zeus Start';
 
@@ -55,19 +55,13 @@ export function runLastSpec() {
 }
 
 function executeInTerminal(fileName, options) {
-    let specTerminal: vscode.Terminal = activeTerminals[getTerminalName(SPEC_TERMINAL_NAME)];
-
-    if (!specTerminal) {
-        specTerminal = vscode.window.createTerminal(getTerminalName(SPEC_TERMINAL_NAME));
-        activeTerminals[SPEC_TERMINAL_NAME] = specTerminal;
-    }
+    const specTerminal = getOrCreateTerminal(SPEC_TERMINAL_NAME);
+    const execute = () => executeCommand(specTerminal, fileName, options) 
 
     if (shouldClearTerminal()) {
-        vscode.commands.executeCommand('workbench.action.terminal.clear').then(() => {
-            executeCommand(specTerminal, fileName, options)
-        });
+        vscode.commands.executeCommand('workbench.action.terminal.clear').then(execute)
     } else {
-        executeCommand(specTerminal, fileName, options);
+        execute();
     }
 }
 
@@ -87,6 +81,18 @@ function getTerminalName(prefix) {
         prefix,
         vscode.workspace.getWorkspaceFolder(vscode.window.activeTextEditor.document.uri).name
     ].join(' ');
+}
+
+function getOrCreateTerminal(prefix: string) {
+    const terminalName = getTerminalName(prefix);
+
+    if (activeTerminals[terminalName]) {
+        return activeTerminals[terminalName];
+    } else {
+        const terminal = vscode.window.createTerminal(terminalName);
+        activeTerminals[terminalName] = terminal;
+        return terminal;
+    }
 }
 
 function getSpecCommand() {
