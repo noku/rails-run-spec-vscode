@@ -15,6 +15,8 @@ export function activate(context: vscode.ExtensionContext) {
     // The command has been defined in the package.json file
     // Now provide the implementation of the command with  registerCommand
     // The commandId parameter must match the command field in package.json
+
+    context.subscriptions.push(vscode.commands.registerCommand('extension.runAllSpecFiles', () => terminal.runSpecFile({path: "/"})));  
     context.subscriptions.push(vscode.commands.registerCommand('extension.runFileSpecs', () => terminal.runSpecFile({})));
     context.subscriptions.push(vscode.commands.registerCommand('extension.runSpecsFromMenu', (fileUri?: vscode.Uri) => {
         terminal.runSpecFile({path: fileUri.fsPath});

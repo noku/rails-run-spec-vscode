@@ -21,6 +21,7 @@
         "Other"
     ],
     "activationEvents": [
+        "onCommand:extension.runAllSpecFiles",
         "onCommand:extension.runFileSpecs",
         "onCommand:extension.runSpecsFromMenu",
         "onCommand:extension.runSpecLine",
@@ -29,6 +30,10 @@
     "main": "./out/src/extension",
     "contributes": {
         "commands": [
+            {
+                "command": "extension.runAllSpecFiles",
+                "title": "Run All Spec Files"
+            },
             {
                 "command": "extension.runFileSpecs",
                 "title": "Run File Specs"
@@ -47,6 +52,10 @@
             }
         ],
         "keybindings": [
+            {
+                "command": "extension.runAllSpecFiles",
+                "key": "cmd+r"
+            },
             {
                 "command": "extension.runFileSpecs",
                 "key": "cmd+shift+t"
