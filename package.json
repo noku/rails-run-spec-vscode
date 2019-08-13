@@ -1,148 +1,156 @@
 {
-    "name": "rails-run-spec-vscode",
-    "displayName": "Rails Run Specs",
-    "description": "Rails Run Spec Files",
-    "version": "0.1.3",
-    "publisher": "noku",
-    "icon": "rspec.png",
-    "galleryBanner": {
-        "color": "#232323",
-        "theme": "dark"
-    },
-    "engines": {
-        "vscode": "^1.19.0"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/noku/rails-run-spec-vscode.git"
-    },
-    "homepage": "https://github.com/noku/rails-run-spec-vscode",
-    "categories": [
-        "Other"
+  "name": "rails-run-spec-vscode",
+  "displayName": "Rails Run Specs",
+  "description": "Rails Run Spec Files",
+  "version": "0.1.3",
+  "publisher": "noku",
+  "icon": "rspec.png",
+  "galleryBanner": {
+    "color": "#232323",
+    "theme": "dark"
+  },
+  "engines": {
+    "vscode": "^1.19.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/noku/rails-run-spec-vscode.git"
+  },
+  "homepage": "https://github.com/noku/rails-run-spec-vscode",
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:extension.runAllSpecFiles",
+    "onCommand:extension.runFileSpecs",
+    "onCommand:extension.runSpecsFromMenu",
+    "onCommand:extension.runSpecLine",
+    "onCommand:extension.runLastSpec"
+  ],
+  "main": "./out/src/extension",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.runAllSpecFiles",
+        "title": "Run All Spec Files"
+      },
+      {
+        "command": "extension.runFileSpecs",
+        "title": "Run File Specs"
+      },
+      {
+        "command": "extension.runSpecsFromMenu",
+        "title": "Run Specs"
+      },
+      {
+        "command": "extension.runSpecLine",
+        "title": "Run Spec Line"
+      },
+      {
+        "command": "extension.runLastSpec",
+        "title": "Run Last Spec"
+      }
     ],
-    "activationEvents": [
-        "onCommand:extension.runAllSpecFiles",
-        "onCommand:extension.runFileSpecs",
-        "onCommand:extension.runSpecsFromMenu",
-        "onCommand:extension.runSpecLine",
-        "onCommand:extension.runLastSpec"
+    "keybindings": [
+      {
+        "command": "extension.runAllSpecFiles",
+        "key": "cmd+r"
+      },
+      {
+        "command": "extension.runFileSpecs",
+        "key": "cmd+shift+t"
+      },
+      {
+        "command": "extension.runSpecLine",
+        "key": "cmd+l"
+      },
+      {
+        "command": "extension.runLastSpec",
+        "key": "cmd+y"
+      }
     ],
-    "main": "./out/src/extension",
-    "contributes": {
-        "commands": [
-            {
-                "command": "extension.runAllSpecFiles",
-                "title": "Run All Spec Files"
-            },
-            {
-                "command": "extension.runFileSpecs",
-                "title": "Run File Specs"
-            },
-            {
-                "command": "extension.runSpecsFromMenu",
-                "title": "Run Specs"
-            },
-            {
-                "command": "extension.runSpecLine",
-                "title": "Run Spec Line"
-            },
-            {
-                "command": "extension.runLastSpec",
-                "title": "Run Last Spec"
-            }
-        ],
-        "keybindings": [
-            {
-                "command": "extension.runAllSpecFiles",
-                "key": "cmd+r"
-            },
-            {
-                "command": "extension.runFileSpecs",
-                "key": "cmd+shift+t"
-            },
-            {
-                "command": "extension.runSpecLine",
-                "key": "cmd+l"
-            },
-            {
-                "command": "extension.runLastSpec",
-                "key": "cmd+y"
-            }
-        ],
-        "menus": {
-            "explorer/context": [
-                {
-                    "command": "extension.runSpecsFromMenu",
-                    "group": "spec"
-                }
-            ]
-        },
-        "configuration": {
-            "title": "Ruby Spec Test Configurations",
-            "properties": {
-                "ruby.specCommand": {
-                    "type": "string",
-                    "default": "",
-                    "description": "Defines a custom command to run for specs (i.e. 'spring rspec')"
-                },
-                "ruby.specFocusTerminal": {
-                    "type": "boolean",
-                    "default": true,
-                    "description": "Defines if it should focus on terminal on each spec run"
-                },
-                "ruby.specClearTerminal": {
-                    "type": "boolean",
-                    "default": true,
-                    "description": "Defines if it should clear the terminal on each spec run"
-                },
-                "ruby.specGem": {
-                    "type": "string",
-                    "default": "rspec",
-                    "description": "Defines the type of tool used for testing",
-                    "enum": [
-                        "rspec",
-                        "zeus"
-                    ]
-                },
-                "ruby.specPattern": {
-                    "type": "string",
-                    "default": "spec",
-                    "description": "Defines the pattern for seaching test files",
-                    "enum": [
-                        "spec",
-                        "test"
-                    ]
-                },
-                "ruby.zeusStartTimeout": {
-                    "type": "number",
-                    "description": "Zeus gem needs a certain time to start. Defined in ms",
-                    "default": 2000
-                },
-                "ruby.specSaveFile": {
-                    "type": "boolean",
-                    "description": "Auto Save file before running spec test",
-                    "default": false
-                }
-            }
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "extension.runSpecsFromMenu",
+          "group": "spec"
         }
+      ]
     },
-    "keywords": [
-        "Ruby on Rails",
-        "Rspec"
-    ],
-    "scripts": {
-        "vscode:prepublish": "tsc -p ./",
-        "compile": "tsc -p ./",
-        "postinstall": "node ./node_modules/vscode/bin/install",
-        "test": "node ./node_modules/vscode/bin/test"
-    },
-    "devDependencies": {
-        "@types/mocha": "^5.2.7",
-        "@types/node": "^12.7.1",
-        "mocha": "^6.2.0",
-        "typescript": "^3.5.3",
-        "typings": "^2.1.0",
-        "vscode": "^1.1.0",
-        "yarn": "^1.17.3"
+    "configuration": {
+      "title": "Ruby Spec Test Configurations",
+      "properties": {
+        "ruby.specCommand": {
+          "type": "string",
+          "default": "",
+          "description": "Defines a custom command to run for specs (i.e. 'spring rspec')"
+        },
+        "ruby.specFocusTerminal": {
+          "type": "boolean",
+          "default": true,
+          "description": "Defines if it should focus on terminal on each spec run"
+        },
+        "ruby.specClearTerminal": {
+          "type": "boolean",
+          "default": true,
+          "description": "Defines if it should clear the terminal on each spec run"
+        },
+        "ruby.specGem": {
+          "type": "string",
+          "default": "rspec",
+          "description": "Defines the type of tool used for testing",
+          "enum": [
+            "rspec",
+            "zeus"
+          ]
+        },
+        "ruby.specPattern": {
+          "type": "string",
+          "default": "spec",
+          "description": "Defines the pattern for seaching test files",
+          "enum": [
+            "spec",
+            "test"
+          ]
+        },
+        "ruby.zeusStartTimeout": {
+          "type": "number",
+          "description": "Zeus gem needs a certain time to start. Defined in ms",
+          "default": 2000
+        },
+        "ruby.specSaveFile": {
+          "type": "boolean",
+          "description": "Auto Save file before running spec test",
+          "default": false
+        }
+      }
     }
+  },
+  "keywords": [
+    "Ruby on Rails",
+    "Rspec"
+  ],
+  "scripts": {
+    "vscode:prepublish": "tsc -p ./",
+    "compile": "tsc -p ./",
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "test": "node ./node_modules/vscode/bin/test",
+    "format": "prettier --config ./prettier.json --write './src/**/*.{ts,tsx}'",
+    "format:check": "prettier --config ./prettier.json --list-different './src/**/*.{ts,tsx}'"
+  },
+  "devDependencies": {
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^12.7.1",
+    "mocha": "^6.2.0",
+    "@types/prettier": "^1.18.0",
+    "prettier": "^1.18.2",
+    "tslint": "^5.18.0",
+    "tslint-config-prettier": "^1.18.0",
+    "tslint-microsoft-contrib": "^6.2.0",
+    "ts-node": "^8.3.0",
+    "typescript": "^3.5.3",
+    "typings": "^2.1.0",
+    "vscode": "^1.1.0",
+    "yarn": "^1.17.3"
+  }
 }

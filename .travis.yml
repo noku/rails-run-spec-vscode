@@ -17,3 +17,4 @@ script:
     cd sample
     echo ">>> Run sample integration test"
     yarn && yarn compile && yarn test
+  - yarn format:check
