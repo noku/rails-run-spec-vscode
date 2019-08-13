@@ -17,6 +17,20 @@ suite("toSpecPath", () => {
         );
     });
 
+    test("Converting shallow lib path", () => {
+        assert.equal(
+            'spec/lib/test_spec.rb',
+            toSpecPath('lib/test.rb', "spec")
+        );
+    });
+
+    test("Converting deep lib path", () => {
+        assert.equal(
+            'spec/lib/capistrano/tasks/test_spec.rb',
+            toSpecPath('lib/capistrano/tasks/test.rb', "spec")
+        );
+    });
+
     test("Converting spec path should be no-op", () => {
         assert.equal(
             'spec/controllers/namespaces/admin/test_controller_spec.rb',
