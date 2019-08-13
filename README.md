@@ -8,21 +8,21 @@ Available commands:
 
 ```json
 [
-    {
-        "command": "extension.runFileSpecs",
-        "title": "Run File Specs",
-        "key": "cmd+shift+t"
-    },
-    {
-        "command": "extension.runSpecLine",
-        "title": "Run Spec Line",
-        "key": "cmd+l"
-    },
-    {
-        "command": "extension.runLastSpec",
-        "title": "Run Last Spec",
-        "key": "cmd+y"
-    }
+  {
+    "command": "extension.runFileSpecs",
+    "title": "Run File Specs",
+    "key": "cmd+shift+t"
+  },
+  {
+    "command": "extension.runSpecLine",
+    "title": "Run Spec Line",
+    "key": "cmd+l"
+  },
+  {
+    "command": "extension.runLastSpec",
+    "title": "Run Last Spec",
+    "key": "cmd+y"
+  }
 ]
 ```
 
