@@ -54,19 +54,19 @@
     "keybindings": [
       {
         "command": "extension.runAllSpecFiles",
-        "key": "cmd+r"
+        "key": "cmd+ctrl+r"
       },
       {
         "command": "extension.runFileSpecs",
-        "key": "cmd+shift+t"
+        "key": "cmd+ctrl+t"
       },
       {
         "command": "extension.runSpecLine",
-        "key": "cmd+l"
+        "key": "cmd+ctrl+l"
       },
       {
         "command": "extension.runLastSpec",
-        "key": "cmd+y"
+        "key": "cmd+ctrl+y"
       }
     ],
     "menus": {
