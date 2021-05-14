@@ -20,4 +20,11 @@ suite("toSpecPath", () => {
       toSpecPath("spec/controllers/namespaces/admin/test_controller_spec.rb", "spec")
     );
   });
+
+  test("Converting nested rails root", () => {
+    assert.equal(
+      "core/spec/controllers/test_controller_spec.rb",
+      toSpecPath("core/app/controllers/test_controller.rb", "spec")
+    );
+  });
 });

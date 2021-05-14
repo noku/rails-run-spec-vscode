@@ -1,11 +1,13 @@
 export default function toSpecPath(filePath: string, pattern: string): string {
-  let [first, ...rest] = filePath.split("/");
-
-  if (filePath.indexOf(`_${pattern}.rb`) > -1 || first === pattern) {
+  if (filePath.indexOf(`_${pattern}.rb`) > -1) {
     return filePath;
-  } else {
-    let middle = rest.slice(0, rest.length - 1);
-    let filename = rest[rest.length - 1];
-    return [pattern, ...middle, filename.replace(".rb", `_${pattern}.rb`)].join("/");
   }
+
+  let path = filePath.split("/");
+  let railsRoot = path.indexOf("app");
+  path[railsRoot] = pattern;
+
+  let filename = path[path.length - 1];
+  let specFile = filename.replace(".rb", `_${pattern}.rb`);
+  return [...path.slice(0, path.length - 1), specFile].join("/");
 }
