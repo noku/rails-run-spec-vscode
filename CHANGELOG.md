@@ -1,5 +1,9 @@
 # Change Log
 
+## [0.1.4]
+
+- BREAKING CHANGE: Update all keybindings to use `cmd+ctrl+XXX` to avoid overwriting commonly used default keybindings.
+
 ## [0.1.2]
 
 - Fixes issue with clearing terminal after the command is executed, introduced in VSCODE version `1.23.0`.

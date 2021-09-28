@@ -2,7 +2,7 @@
   "name": "rails-run-spec-vscode",
   "displayName": "Rails Run Specs",
   "description": "Rails Run Spec Files",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "publisher": "noku",
   "icon": "rspec.png",
   "galleryBanner": {
@@ -54,19 +54,19 @@
     "keybindings": [
       {
         "command": "extension.runAllSpecFiles",
-        "key": "cmd+r"
+        "key": "cmd+ctrl+r"
       },
       {
         "command": "extension.runFileSpecs",
-        "key": "cmd+shift+t"
+        "key": "cmd+ctrl+t"
       },
       {
         "command": "extension.runSpecLine",
-        "key": "cmd+l"
+        "key": "cmd+ctrl+l"
       },
       {
         "command": "extension.runLastSpec",
-        "key": "cmd+y"
+        "key": "cmd+ctrl+y"
       }
     ],
     "menus": {
