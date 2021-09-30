@@ -9,19 +9,24 @@ Available commands:
 ```json
 [
   {
+    "command": "extension.runAllSpecFiles",
+    "title": "Run All Specs",
+    "key": "cmd+ctrl+r"
+  },
+  {
     "command": "extension.runFileSpecs",
     "title": "Run File Specs",
-    "key": "cmd+shift+t"
+    "key": "cmd+ctrl+t"
   },
   {
     "command": "extension.runSpecLine",
     "title": "Run Spec Line",
-    "key": "cmd+l"
+    "key": "cmd+ctrl+l"
   },
   {
     "command": "extension.runLastSpec",
     "title": "Run Last Spec",
-    "key": "cmd+y"
+    "key": "cmd+ctrl+y"
   }
 ]
 ```
